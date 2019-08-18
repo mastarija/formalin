@@ -1,5 +1,5 @@
-# Formalin
+# 🧪 Formalin
 
-🧪 Haskell library for preserving data structures in standard HTML forms.
+_Haskell library for preserving data structures in standard HTML forms._
 
 ---
