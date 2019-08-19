@@ -18,7 +18,10 @@ maintainer          : master@mastarija.com
 category            : Web
 
 library
-  exposed-modules   : Data.Formalin
-  build-depends     : base ^>=4.12.0.0
+  exposed-modules   : Formalin
+                    , Formalin.LabelParser
+  build-depends     : base        ^>=4.12.0.0
+                    , text        ^>=1.02.0.0
+                    , attoparsec  ^>=0.13.0.0
   hs-source-dirs    : lib
   default-language  : Haskell2010
