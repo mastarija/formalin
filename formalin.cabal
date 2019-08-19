@@ -32,10 +32,10 @@ library
 test-suite formalin-test
   import            : core
   build-depends     : formalin
-                    , hspec           ^>=2.7.1
+                    , hspec       ^>=2.07.1
+                    , QuickCheck  ^>=2.13.2
   type              : exitcode-stdio-1.0
   main-is           : Spec.hs
   hs-source-dirs    : tst
   other-modules     : Formalin.ParserSpec
   build-tool-depends: hspec-discover:hspec-discover ^>=2.7.1
-

@@ -6,7 +6,7 @@ import Data.Text ( Text )
 import Data.List ( notElem )
 import Data.String ( fromString )
 import Control.Applicative ( many, optional )
-import Data.Attoparsec.Text ( Parser, char, string, choice, takeWhile, takeWhile1, endOfInput )
+import Data.Attoparsec.Text ( Parser, char, string, choice, takeWhile, takeWhile1, endOfInput, parseOnly )
 --
 
 types :: [ Text ]
@@ -31,3 +31,6 @@ labelParser = do
   mcolon <- optional $ char ':'
   mvtype <- maybe ( pure Nothing ) ( const $ Just <$> valueType ) mcolon
   endOfInput >> pure ( simple : nested, mvtype )
+
+parseLabel :: Text -> Either String ( [ Text ], Maybe Text )
+parseLabel = parseOnly labelParser
