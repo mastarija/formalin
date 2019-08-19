@@ -1,4 +1,4 @@
-module Formalin.LabelParser where
+module Formalin.Parser where
 --
 import Prelude hiding ( takeWhile )
 --
