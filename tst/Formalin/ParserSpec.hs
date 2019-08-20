@@ -1,5 +1,3 @@
-{-# LANGUAGE BlockArguments #-}
-{-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE OverloadedStrings #-}
 --
 module Formalin.ParserSpec where
