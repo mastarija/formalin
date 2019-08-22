@@ -1,11 +1,17 @@
+{- |
+  This modules main function is 'parseLabel' which parses a single label into a
+  workable format which can further be used to construct an 'Opaque' data
+  structure.
+-}
+--
 module Formalin.Parser where
 --
 import Prelude hiding ( takeWhile )
 --
-import Data.Text ( Text )
-import Data.List ( notElem )
-import Data.String ( fromString )
-import Control.Applicative ( many, optional )
+import Data.Text            ( Text )
+import Data.List            ( notElem )
+import Data.String          ( fromString )
+import Control.Applicative  ( many, optional )
 import Data.Attoparsec.Text ( Parser, char, string, choice, takeWhile, takeWhile1, endOfInput, parseOnly )
 --
 

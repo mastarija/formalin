@@ -4,12 +4,12 @@
 --
 module Opaque where
 --
-import Data.Text           ( Text       )
-import Data.ByteString     ( ByteString )
-import Data.Scientific     ( Scientific )
-import Data.HashMap.Strict ( HashMap    )
+import Data.Text            ( Text )
+import Data.ByteString      ( ByteString )
+import Data.Scientific      ( Scientific )
+import Data.HashMap.Strict  ( HashMap )
 --
-import GHC.Generics        ( Generic    )
+import GHC.Generics         ( Generic )
 --
 
 {- |
@@ -22,14 +22,14 @@ import GHC.Generics        ( Generic    )
   storing binary data (done with 'ByteString').
 -}
 data Opaque
-  = ONull               -- ^ represents a null value - @:null@
-  | OBool   !Bool       -- ^ good old 'True' and 'False' - @:bool@
-  | OBinary !ByteString -- ^ plain binary data (images, files, etc.) - @:binary@
-  | ONumber !Scientific -- ^ number, any number - @:number@
-  | OString !Text       -- ^ textual value - @:string@
-  | OVector !OVector    -- ^ a list / vector of 'Opaque' values - @implicit@
-  | ORecord !ORecord    -- ^ record / collection of named fields containing
-                        --   'Opaque' values - @implicit@
+  = ONull                   -- ^ represents a null value - @:null@
+  | OBool   !Bool           -- ^ good old 'True' and 'False' - @:bool@
+  | OBinary !ByteString     -- ^ plain binary data (images, files, etc.) - @:binary@
+  | ONumber !Scientific     -- ^ number, any number - @:number@
+  | OString !Text           -- ^ textual value - @:string@
+  | OVector !OVector        -- ^ a list / vector of 'Opaque' values - @implicit@
+  | ORecord !ORecord        -- ^ record / collection of named fields containing
+                            --   'Opaque' values - @implicit@
   deriving ( Eq, Show, Generic )
 
 {- |
