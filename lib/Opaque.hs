@@ -32,6 +32,8 @@ data Opaque
                             --   'Opaque' values - @implicit@
   deriving ( Eq, Show, Generic )
 
+type OLabel = Text
+
 {- |
   Type alias for a list of `Opaque` values.
 -}
@@ -40,4 +42,4 @@ type OVector = [ Opaque ]
 {- |
   Type alias used to represent a "record" within the `Opaque` "type system".
 -}
-type ORecord = HashMap Text Opaque
+type ORecord = HashMap OLabel Opaque

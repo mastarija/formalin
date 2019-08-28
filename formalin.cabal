@@ -24,6 +24,7 @@ common core
                     , bytestring            ^>=0.10.10.0
                     , scientific            ^>=0.03.06.2
                     , unordered-containers  ^>=0.02.10.0
+                    , pretty-simple         ^>=2.1.0.0
   default-language  : Haskell2010
 
 library

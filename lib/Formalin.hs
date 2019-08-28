@@ -1,19 +1,28 @@
+{-# LANGUAGE OverloadedStrings #-}
+--
 module Formalin where
 --
-import Opaque              ( Opaque (..), OVector, ORecord )
+import Data.Foldable       ( foldl' )
+import Opaque              ( Opaque (..), OVector, ORecord, OLabel )
+import Data.Maybe          ( isJust, fromMaybe )
 import Data.Text           ( Text )
+import Control.Applicative ( (<|>) )
 import Formalin.Parser     ( labelParser )
 import Data.HashMap.Strict ( alter )
+import Text.Read           ( readMaybe )
+import Data.Scientific     ( Scientific )
 --
 
-builder :: Opaque -> [ Text ] -> Opaque -> Opaque
-builder ini lbls val = case ini of
-  ORecord r -> recorder r
-  otherwise -> recorder mempty
-  where addKV :: ORecord -> Text -> Opaque -> ORecord
-        addKV = undefined
-        recorder r = case lbls of
-          []     -> val
-          [l]    -> ORecord $ addKV r l val
-          (l:ls) -> ORecord $ addKV r l $ builder ( ORecord mempty ) ls val
+builder :: Opaque -> [ ( [ OLabel ], Opaque ) ] -> Opaque
+builder = foldl' $ flip $ uncurry embedder
 
+embedder :: [ OLabel ] -> Opaque -> Opaque -> Opaque
+embedder []   val _ = val
+embedder lbls val src = ORecord $ recorder lbls val $ case src of
+  ORecord rec -> rec
+  otherwise   -> mempty
+
+recorder :: [ OLabel ] -> Opaque -> ORecord -> ORecord
+recorder []           _   rec = rec
+recorder ( lbl:lbls ) val rec = alter
+  ( Just . embedder lbls val . fromMaybe ONull ) lbl rec
