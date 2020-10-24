@@ -1,46 +1,35 @@
-cabal-version       : 2.4
+cabal-version       : 3.0
+
 name                : formalin
-version             : 0.1.0.0
+version             : 0.0.0.0
+build-type          : Simple
+
+category            : Web
+synopsis            : Haskell library for preserving data structures in standard HTML forms.
+description         : Please see the README.
 
 homepage            : https://github.com/mastarija/formalin
 bug-reports         : https://github.com/mastarija/formalin/issues
 
-synopsis            : Haskell library for preserving data structures in standard HTML forms.
-description         :
+author              : Luka Hadžiegrić
+maintainer          : luka@mastarija.com
 
 license             : MIT
 license-file        : LICENSE
-extra-source-files  : CHANGELOG.md, README.md
-
-author              : Luka Hadziegric
-maintainer          : master@mastarija.com
-
-category            : Web
+copyright           : Copyright (C) Luka Hadžiegrić 2020
 
 common core
-  build-depends     : base                  ^>=4.12.00.0
-                    , text                  ^>=1.02.00.0
-                    , attoparsec            ^>=0.13.00.0
-                    , bytestring            ^>=0.10.10.0
-                    , scientific            ^>=0.03.06.2
-                    , unordered-containers  ^>=0.02.10.0
-                    , pretty-simple         ^>=2.1.0.0
+  build-depends     : base
+                    , text
+                    , opaque
+                    , attoparsec
+                    , bytestring
+                    , scientific
+                    , unordered-containers
+
   default-language  : Haskell2010
 
 library
   import            : core
   hs-source-dirs    : lib
-  exposed-modules   : Opaque
-                    , Formalin
-                    , Formalin.Parser
-
-test-suite formalin-test
-  import            : core
-  build-depends     : formalin
-                    , hspec       ^>=2.07.1
-                    , QuickCheck  ^>=2.13.2
-  type              : exitcode-stdio-1.0
-  main-is           : Spec.hs
-  hs-source-dirs    : tst
-  other-modules     : Formalin.ParserSpec
-  build-tool-depends: hspec-discover:hspec-discover ^>=2.7.1
+  exposed-modules   : Formalin
