@@ -2,34 +2,48 @@ cabal-version       : 3.0
 
 name                : formalin
 version             : 0.0.0.0
-build-type          : Simple
 
-category            : Web
-synopsis            : Haskell library for preserving data structures in standard HTML forms.
+category            : Data
+synopsis            : Simple structured HTML forms.
 description         : Please see the README.
 
-homepage            : https://github.com/mastarija/formalin
+homepage            : https://github.com/mastarija/formalin#readme
 bug-reports         : https://github.com/mastarija/formalin/issues
 
 author              : Luka Hadžiegrić
 maintainer          : luka@mastarija.com
 
 license             : MIT
-license-file        : LICENSE
-copyright           : Copyright (C) Luka Hadžiegrić 2020
+-- license-file        : LICENSE
+copyright           : Copyright (C) Luka Hadžiegrić 2022
+
+source-repository head
+  type              : git
+  location          : https://github.com/mastarija/formalin
 
 common core
+  ghc-options       : -Wall
   build-depends     : base
                     , text
-                    , opaque
-                    , attoparsec
+                    , wai
+                    , warp
+                    , servant
+                    , servant-server
+                    , http-media
                     , bytestring
-                    , scientific
-                    , unordered-containers
-
+                    , lucid
+                    , http-api-data
+                    , attoparsec
+                    , aeson
+                    , vector
   default-language  : Haskell2010
 
 library
   import            : core
   hs-source-dirs    : lib
   exposed-modules   : Formalin
+                    , Formalin.Test
+                    , Formalin.Model
+                    , Formalin.Parser
+                    , Formalin.Builder
+                    , Formalin.Servant
